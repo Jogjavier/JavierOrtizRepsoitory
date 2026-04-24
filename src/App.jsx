@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 const data = {
   name: "Javier Ortiz Godinez",
   role: "Desarrollador de Software & Software Embebido",
-  bio: "Ingeniero en Sistemas Computacionales con enfoque en infraestructura, sistemas embebidos e integración de hardware (IoT). Experiencia en desarrollo backend, despliegue en entornos productivos y comunicación entre dispositivos físicos y servicios en la nube.",
+  bio: "Ingeniero en Sistemas Computacionales con enfoque en backend, infraestructura, sistemas embebidos e integración de hardware (IoT). Experiencia en desarrollo backend, despliegue en entornos productivos y comunicación entre dispositivos físicos y servicios en la nube.",
   email: "jog02ortiz@gmail.com",
   phone: "+52 675-106-7857",
   linkedin: "linkedin.com/in/javier-ortiz-godinez-1b292b21a",
@@ -39,7 +39,7 @@ const data = {
       bullets: [
         "Desarrollo de aplicación móvil y de escritorio para gestión de inventario.",
         "Implementación de backend con Firebase (Firestore + Auth).",
-        "Manejo de autenticación y control de acceso por roles.",
+        "Manejo de autenticación y control de acceso.",
         "Generación de reportes en formato Excel.",
         "Integración de funcionalidades tipo punto de venta.",
       ],
@@ -53,9 +53,10 @@ const data = {
       date: "09/2025 – 01/2026",
       color: "purple",
       bullets: [
+        "Diseño de arquitectura para el sistema de profesionalización docente del ITSZO.",
         "Desarrollo de sistema web para gestión de información académica.",
         "Diseño e implementación de base de datos en PostgreSQL.",
-        "Generación de reportes estadísticos y visualización de datos.",
+        "Generación de reportes estadísticos y visualización de datos.", 
         "Implementación de autenticación y manejo de roles.",
         "Generación de documentos PDF con códigos QR.",
         "Arquitectura MVC en entorno productivo.",
@@ -66,15 +67,15 @@ const data = {
 
   skillGroups: [
     { label: "Lenguajes", items: ["Python", "C#", "PHP", "Dart", "JavaScript"] },
-    { label: "Frameworks & Mobile", items: ["Laravel", "React", "Flutter", "Tkinter"] },
+    { label: "Frameworks & Mobile", items: ["Laravel", "React", "Flutter"] },
     { label: "Infraestructura", items: ["Docker", "Linux", "Render", "Plesk", "Git / GitHub", "REST API"] },
     { label: "Bases de Datos", items: ["PostgreSQL", "Firebase", "Firestore"] },
-    { label: "Embebidos / IoT", items: ["Raspberry Pi", "ESP32", "RFID RC522", "Sensor de flujo", "Sensor de corriente"] },
+    { label: "Embebidos / IoT", items: ["Raspberry Pi", "ESP32", "RFID RC522", "Sensores"] },
     { label: "Metodologías", items: ["Scrum", "Jira", "MVC", "Clean Architecture"] },
   ],
 
   projects: [
-    { icon: "💧", type: "IoT · Embebido · Mobile", name: "Bombas de Agua Automáticas", desc: "Control automático y remoto de bombas con ESP32. Sensores de flujo y corriente para datos en tiempo real. Monitoreo desde app Flutter con visualización de consumo energético.", tags: ["ESP32", "Flutter", "Sensores", "IoT"] },
+    { icon: "💧", type: "IoT · Embebido · Mobile", name: "Control de Bombas de Agua Automáticas", desc: "Control automático y remoto de bombas con ESP32. Sensores de flujo y corriente para datos en tiempo real. Monitoreo desde app Flutter con visualización de consumo energético.", tags: ["ESP32", "Flutter", "Sensores", "IoT"] },
     { icon: "🐳", type: "Backend · DevOps", name: "API REST en Contenedores", desc: "API REST con arquitectura limpia, autenticación JWT y control de acceso. Contenedorización con Docker y despliegue en Render. Enfocada en escalabilidad.", tags: ["Docker", "REST API", "Render", "Clean Arch."] },
     { icon: "🔐", type: "Hardware · Python", name: "Control de Acceso RFID", desc: "Sistema físico con Raspberry Pi y módulo RFID RC522. Interfaz Tkinter y PostgreSQL en la nube para registro y gestión de accesos en tiempo real.", tags: ["Raspberry Pi", "RFID", "PostgreSQL", "Python"] },
     { icon: "📦", type: "Full Stack · Mobile", name: "App de Inventario para Renta", desc: "Aplicación multiplataforma (móvil + escritorio) con POS, reportes Excel, autenticación Firebase y control de acceso por roles.", tags: ["Flutter", "Firebase", "Firestore", "Excel"] },
@@ -376,7 +377,7 @@ function Contact() {
           <FadeUp>
             <div>
               <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#e8edf2", marginBottom: 14 }}>¿Tienes un proyecto en mente?</h3>
-              <p style={{ color: "#8a9bb0", fontSize: ".95rem", lineHeight: 1.8, marginBottom: 28 }}>Estoy disponible para nuevas oportunidades, proyectos freelance o simplemente para platicar sobre tecnología. ¡No dudes en escribirme!</p>
+              <p style={{ color: "#8a9bb0", fontSize: ".95rem", lineHeight: 1.8, marginBottom: 28 }}>Estoy disponible para nuevas oportunidades y proyectos freelance</p>
               <a href={`mailto:${data.email}`} style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: ".7rem 1.5rem", borderRadius: 4, background: "#00d4ff", color: "#000", fontFamily: "'Space Mono', monospace", fontSize: 12, textDecoration: "none", fontWeight: 700 }}>Enviar mensaje →</a>
             </div>
           </FadeUp>
@@ -447,10 +448,6 @@ export default function Portfolio() {
       <Skills />
       <Projects />
       <Contact />
-
-      <footer style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "2rem", borderTop: "1px solid #1f2d40", fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#4a5a6a", letterSpacing: ".06em" }}>
-        © 2025 Javier Ortiz Godinez · Desarrollado con ♥ y mucho café
-      </footer>
     </>
   );
 }
