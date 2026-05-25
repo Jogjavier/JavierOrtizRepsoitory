@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import RFIDSimulator from "./components/RFIDSimulator";
 
 const data = {
   name: "Javier Ortiz Godinez",
@@ -331,7 +332,7 @@ function Skills() {
   );
 }
 
-function Projects() {
+function Projects({ onDemo }) {
   return (
     <section id="projects" style={{ background: "#080b0f" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem clamp(1.5rem,5vw,3rem)" }}>
@@ -353,6 +354,29 @@ function Projects() {
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {p.tags.map(t => <Tag key={t} label={t} color="cyan" />)}
                 </div>
+                {p.icon === "🔐" && (
+                  <button
+                    onClick={onDemo}
+                    style={{
+                      marginTop: 4,
+                      padding: "8px 16px",
+                      background: "rgba(0,212,255,0.08)",
+                      border: "1px solid rgba(0,212,255,0.3)",
+                      borderRadius: 4,
+                      color: "#00d4ff",
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      cursor: "pointer",
+                      letterSpacing: ".06em",
+                      transition: "all .2s",
+                      alignSelf: "flex-start",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,212,255,0.15)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "rgba(0,212,255,0.08)"; }}
+                  >
+                    ▶ Ver demo interactiva
+                  </button>
+                )}
               </div>
             </FadeUp>
           ))}
@@ -409,6 +433,7 @@ function Contact() {
 
 export default function Portfolio() {
   const [active, setActive] = useState("hero");
+  const [showDemo, setShowDemo] = useState(false);
 
   useEffect(() => {
     const ids = ["hero", "about", "experience", "skills", "projects", "contact"];
@@ -446,8 +471,40 @@ export default function Portfolio() {
       <About />
       <Experience />
       <Skills />
-      <Projects />
+      <Projects onDemo={() => setShowDemo(true)} />
       <Contact />
+      {showDemo && (
+        <div 
+          onClick={() => setShowDemo(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 1000,
+            background: "rgba(0,0,0,0.8)", backdropFilter: "blur(8px)",
+            overflowY: "auto", display: "flex", padding: "40px 20px"
+          }}
+        >
+          <button 
+            onClick={() => setShowDemo(false)}
+            style={{
+              position: "fixed", top: 20, right: 20,
+              background: "rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.2)",
+              color: "#fff", fontSize: 24, cursor: "pointer",
+              width: 44, height: 44, borderRadius: "50%",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              zIndex: 1001, transition: "background 0.2s"
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,0,0,0.8)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "rgba(0,0,0,0.5)"; }}
+          >
+            ✕
+          </button>
+          <div 
+            onClick={e => e.stopPropagation()}
+            style={{ margin: "auto", width: "100%", maxWidth: 900, position: "relative" }}
+          >
+            <RFIDSimulator />
+          </div>
+        </div>
+      )}
     </>
   );
 }
